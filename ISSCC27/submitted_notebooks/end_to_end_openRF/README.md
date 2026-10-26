@@ -1,3 +1,5 @@
+Authors: Matthias Hornisch, Arne Christopher Freiherr von Zedlitz-Neukirch  - Chair of High Frequency Electronics, RWTH Aachen University
+
 Lowering the Barrier to RFIC Design: An End-to-End Open-Source Workflow Using Open PDKs
 
 A major challenge in today’s RFIC design landscape is the high barrier to entry. Commercial design tools are often prohibitively expensive, while access to state-of-the-art semiconductor technologies
