@@ -52,7 +52,7 @@ XML_filename = "SG13G2.xml"          # stackup
 settings['preprocess_gds'] = False
 
 # merge via polygons with distance less than .. microns, set to 0 to disable via merging.
-settings['merge_polygon_size'] = 0.3
+settings['merge_polygon_size'] = 1
 
 
 # get path for this simulation file

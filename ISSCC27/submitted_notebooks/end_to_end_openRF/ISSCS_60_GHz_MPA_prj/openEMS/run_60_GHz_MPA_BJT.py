@@ -43,7 +43,7 @@ XML_filename = "SG13G2.xml"
 # preprocess_gds = True
 
 # merge polygons with distance less than xxx um, or set to 0 to disable via array merging
-merge_polygon_size = 0.5 # Top2Via is 1.09 um apart, via2-4 0.42 um
+merge_polygon_size = 1 # Top2Via is 1.09 um apart, via2-4 0.42 um
 
 # get path for this simulation file
 script_path = utilities.get_script_path(__file__)
