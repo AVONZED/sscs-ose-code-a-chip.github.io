@@ -8,6 +8,8 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import skrf as rf
 
+plt.style.use(Path(__file__).parent / "../python_postprocessing/own.mplstyle")
+
 
 def dB(x):
     return 20 * np.log10(np.abs(x))
@@ -22,8 +24,8 @@ def main():
     parser.add_argument(
         "s2p",
         nargs="?",
-        # default="/home/matthi/projects/40_GHZ_LOW_NOISE_TIA_matthi/design_data/openEMS/output/OpenEMS_Choke_T1_ReverseIng_data/OpenEMS_Choke_T1_ReverseIng.s2p",
-        default="/home/matthi/QucsWorkspace/60_GHz_MPA_prj/openEMS/output/run_via_mesh_test_overlap_data/run_via_mesh_test_overlap.s2p",
+        # default="/Users/matthi/IHP-PDK/sscs-ose-code-a-chip.github.io/ISSCC27/submitted_notebooks/end_to_end_openRF/ISSCS_60_GHz_MPA_prj/openEMS/output/run_VCC_snake_v6_data/run_VCC_snake_v6.s2p",
+        default="/Users/matthi/IHP-PDK/sscs-ose-code-a-chip.github.io/ISSCC27/submitted_notebooks/end_to_end_openRF/ISSCS_60_GHz_MPA_prj/openEMS/output/run_Basebias_inductor_data/run_Basebias_inductor.s2p",
         help="Input Touchstone file (.s2p)"
     )
 
@@ -156,6 +158,66 @@ def main():
     plt.title("Differential Q Factor")
     plt.tight_layout()
     plt.savefig(output_dir / "q_factor.png", dpi=300)
+
+
+    # ------------------------------------------------------------
+    # Combined Inductance and Q-Factor Plot
+    # ------------------------------------------------------------
+
+    fig, ax1 = plt.subplots(
+        num="Inductance and Q Factor",
+        figsize=(7, 4)
+    )
+
+    frequency_ghz = f / 1e9
+
+    # Find the frequency point closest to 60 GHz
+    target_freq_ghz = 60.0
+    idx_60ghz = np.argmin(np.abs(frequency_ghz - target_freq_ghz))
+
+    L_60ghz = Ldiff[idx_60ghz] * 1e9
+    Q_60ghz = Qdiff[idx_60ghz]
+    actual_freq_ghz = frequency_ghz[idx_60ghz]
+
+    # Left y-axis: Inductance
+    line1, = ax1.plot(
+        frequency_ghz,
+        Ldiff * 1e9,
+        label=f"Inductance ({L_60ghz:.3f} nH @ {actual_freq_ghz:.2f} GHz)",
+    )
+
+    ax1.set_xlabel("Frequency (GHz)")
+    ax1.set_ylabel("Inductance (nH)")
+    ax1.grid(True)
+
+    # Right y-axis: Q-factor
+    ax2 = ax1.twinx()
+
+    line2, = ax2.plot(
+        frequency_ghz,
+        Qdiff,
+        color='red',
+        label=f"Q-factor ({Q_60ghz:.2f} @ {actual_freq_ghz:.2f} GHz)",
+    )
+
+    ax2.set_ylabel("Q-factor")
+
+    # Combined legend for both y-axes
+    ax1.legend(
+        [line1, line2],
+        [line1.get_label(), line2.get_label()],
+        loc="best",
+        framealpha=1.0,
+    )
+
+    ax1.set_title("Differential Inductance and Q-Factor")
+
+    fig.tight_layout()
+    fig.savefig(
+        output_dir / "inductance_q_factor.png",
+        dpi=300,
+    )
+
 
     # plt.show()
 
