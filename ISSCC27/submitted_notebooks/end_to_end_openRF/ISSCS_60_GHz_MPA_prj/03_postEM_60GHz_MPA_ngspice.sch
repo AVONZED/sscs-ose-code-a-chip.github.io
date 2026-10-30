@@ -1,6 +1,6 @@
 <Qucs Schematic 25.2.0>
 <Properties>
-  <View=-1,-102,2605,841,1.07574,1182,169>
+  <View=-1,-909,3483,1329,1.14671,1252,1133>
   <Grid=10,10,1>
   <DataSet=03_postEM_60GHz_MPA_ngspice.dat>
   <DataDisplay=03_postEM_60GHz_MPA_ngspice.dpl>
@@ -40,15 +40,15 @@
   <GND * 1 1490 480 0 0 0 0>
   <rfcmim cap_rfcmim1_dim 0 2720 -160 -26 24 0 0 "cap_rfcmim" 0 "X" 0 "5" 1 "10.0" 1 "sub!" 0 "3.0" 1 "m*((w*l*1.e-3) + 2*(w+l)*40e-12)" 1 "1" 0 "_xml_device_name=cap_rfcmim" 0>
   <rfcmim cap_rfcmim2_dim 0 2920 -160 -26 24 0 0 "cap_rfcmim" 0 "X" 0 "20" 1 "20" 1 "sub!" 0 "3.0" 1 "m*((w*l*1.e-3) + 2*(w+l)*40e-12)" 1 "1" 0 "_xml_device_name=cap_rfcmim" 0>
-  <Lib cap_rfcmim2 1 1920 320 -38 54 0 1 "/home/matthi/QucsWorkspace/user_lib/IHP_PDK_basic_components" 0 "cap_rfcmim" 0 "10u" 1 "20.0u" 1>
+  <Lib cap_rfcmim3 1 1920 320 -38 54 0 1 "/home/matthi/QucsWorkspace/user_lib/IHP_PDK_basic_components" 0 "cap_rfcmim" 0 "10u" 1 "20.0u" 1>
   <GND * 1 1920 350 0 0 0 0>
   <rfcmim cap_rfcmim3_dim 0 2520 -160 -26 24 0 0 "cap_rfcmim" 0 "X" 0 "5" 1 "7" 1 "sub!" 0 "3.0" 1 "m*((w*l*1.e-3) + 2*(w+l)*40e-12)" 1 "1" 0 "_xml_device_name=cap_rfcmim" 0>
   <GND * 1 1290 480 0 0 0 0>
   <GND * 1 1780 540 0 0 0 0>
   <Pac P1 1 1190 630 18 -26 0 1 "1" 1 "50 Ohm" 1 "0 dBm" 1 "60 GHz" 1 "26.85" 0 "true" 0>
   <Pac P2 1 2140 400 18 -26 0 1 "2" 1 "50 Ohm" 1 "0 dBm" 1 "60 GHz" 1 "26.85" 0 "true" 0>
-  <Lib cap_rfcmim1 1 1490 450 -46 -103 0 1 "/home/matthi/QucsWorkspace/user_lib/IHP_PDK_basic_components" 0 "cap_rfcmim" 0 "3.335u" 1 "8u" 1>
-  <Lib cap_rfcmim3 1 1290 450 -26 -96 0 1 "/home/matthi/QucsWorkspace/user_lib/IHP_PDK_basic_components" 0 "cap_rfcmim" 0 "3.961u" 1 "4.9u" 1>
+  <Lib cap_rfcmim2 1 1490 450 -46 -103 0 1 "/home/matthi/QucsWorkspace/user_lib/IHP_PDK_basic_components" 0 "cap_rfcmim" 0 "3.335u" 1 "8u" 1>
+  <Lib cap_rfcmim1 1 1290 450 -26 -96 0 1 "/home/matthi/QucsWorkspace/user_lib/IHP_PDK_basic_components" 0 "cap_rfcmim" 0 "3.961u" 1 "4.9u" 1>
   <IProbe Iin 1 1190 530 16 -26 0 1>
   <SPfile X8 1 1780 480 24 -15 0 0 "openEMS/output/run_60_GHz_MPA_BJT_data/run_60_GHz_MPA_noBJT_fstop350GHz.s4p" 0 "rectangular" 0 "linear" 0 "short" 0 "4" 0>
   <GND * 1 1770 230 0 0 0 3>
@@ -63,7 +63,7 @@
   <NutmegEq NutmegEq1 1 1220 -220 -28 16 0 0 "SP1" 1 "k=(1 - abs(s_1_1)^2 - abs(s_2_2)^2 + abs(s_1_1 * s_2_2 - s_1_2 * s_2_1)^2) / (2 * abs(s_1_2 * s_2_1))" 1 "s11_db=db(s_1_1)" 1 "s12_db=db(s_1_2)" 1 "s21_db=db(s_2_1)" 1 "s22_db=db(s_2_2)" 1>
   <SPfile X11 1 1380 630 -42 -8 0 1 "openEMS/output/run_Basebias_inductor_data/run_Basebias_inductor.s2p" 0 "rectangular" 0 "linear" 0 "short" 0 "2" 0>
   <SPfile X12 1 1410 480 -26 -95 0 0 "openEMS/output/run_BiasT_3dports_data/run_BiasT_3dports.s4p" 0 "rectangular" 0 "linear" 0 "shortall" 0 "4" 0>
-  <SPICE X13 1 1860 320 -26 -65 0 0 "openEMS/output/run_Tline_coll_out_data/run_Tline_coll_out_le.spice" 1 "_netp1,_netp2" 0 "yes" 0 "none" 0 "" 0>
+  <SPICE X13 1 1860 320 -58 -56 0 0 "openEMS/output/run_Tline_coll_out_data/run_Tline_coll_out_le.spice" 1 "_netp1,_netp2" 0 "yes" 0 "none" 0 "" 0>
   <SPfile X9 1 1800 230 22 -12 0 3 "openEMS/output/run_VCC_snake_v6_data/run_VCC_snake_v6.s2p" 0 "rectangular" 0 "linear" 0 "short" 0 "2" 0>
 </Components>
 <Wires>
